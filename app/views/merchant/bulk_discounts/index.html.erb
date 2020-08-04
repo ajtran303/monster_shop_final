@@ -1,0 +1,13 @@
+<h1>All My Bulk Discounts</h1>
+
+<% if @discounts.empty? %>
+  <h2>You haven't added any bulk discounts yet.</h2>
+<% else %>
+  <% @discounts.each do |discount| %>
+    <section class="discount-<%= discount.id %>">
+      <span>Quantity: <%= discount.bulk_quantity %></span>
+      <span>Discount: <%= discount.percentage_discount %>%</span>
+      <span>Created At: <%= discount.created_at.to_s(:short) %></span>
+    </section>
+  <% end %>
+<% end %>
