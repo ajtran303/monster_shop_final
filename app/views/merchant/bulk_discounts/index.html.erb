@@ -1,5 +1,7 @@
 <h1>All My Bulk Discounts</h1>
 
+<%= link_to "Create New Bulk Discount", new_merchant_discount_path %>
+
 <% if @discounts.empty? %>
   <h2>You haven't added any bulk discounts yet.</h2>
 <% else %>
