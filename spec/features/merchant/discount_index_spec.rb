@@ -14,13 +14,16 @@ RSpec.describe "Merchant Bulk Discount Index Page Spec" do
   describe "As a merchant employee" do
     describe "When I visit my merchant dashboard" do
       it "I can click a link to my bulk discounts index page" do
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@employee1)
+        [@employee1, @employee2].each do |employee|
+          allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(employee)
 
-        visit merchant_dashboard_path
-        expect(page).to have_link("My Bulk Discounts", href: "/merchant/discounts")
+          visit merchant_dashboard_path
+          expect(page).to have_link("My Bulk Discounts", href: "/merchant/discounts")
 
-        click_link("My Bulk Discounts")
-        expect(current_path).to eq("/merchant/discounts")
+          click_link("My Bulk Discounts")
+          expect(current_path).to eq("/merchant/discounts")
+          expect(page).to have_content("All My Bulk Discounts")
+        end
       end
     end
 
@@ -28,12 +31,12 @@ RSpec.describe "Merchant Bulk Discount Index Page Spec" do
       describe "If I have discounts" do
         it "I see a list of all my discounts and their details" do
           allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@employee1)
-          visit "/merchant/discounts"
+          visit merchant_discounts_path
 
           [@discount1, @discount2].each do |discount|
             within ".discount-#{discount.id}" do
               expect(page).to have_content("Quantity: #{discount.bulk_quantity}")
-              expect(page).to have_content("Discount: #{discount.percentage_discount}")
+              expect(page).to have_content("Discount: #{discount.percentage_discount}%")
               expect(page).to have_content("Created At: #{discount.created_at.to_s(:short)}")
             end
           end
@@ -43,7 +46,7 @@ RSpec.describe "Merchant Bulk Discount Index Page Spec" do
       describe "If I do not have discounts" do
         it "I see a message that says I have not added any discounts yet" do
           allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@employee2)
-          visit "/merchant/discounts"
+          visit merchant_discounts_path
 
           expect(page).to have_content("You haven't added any bulk discounts yet.")
         end
