@@ -1,0 +1,17 @@
+<h1>All My Bulk Discounts</h1>
+
+<%= link_to "Create New Bulk Discount", new_merchant_discount_path %>
+
+<% if @discounts.empty? %>
+  <h2>You haven't added any bulk discounts yet.</h2>
+<% else %>
+  <% @discounts.each do |discount| %>
+    <section class="discount-<%= discount.id %>">
+      <span>Quantity: <%= discount.bulk_quantity %></span>
+      <span>Discount: <%= discount.percentage_discount %>%</span>
+      <span>Created At: <%= discount.created_at.to_s(:short) %></span>
+      <span><%= link_to "Update Discount", "/merchant/discounts/#{discount.id}/edit" %></span>
+      <span><%= button_to "Delete", merchant_discount_path(discount), method: :delete %></span>
+    </section>
+  <% end %>
+<% end %>

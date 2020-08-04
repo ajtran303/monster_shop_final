@@ -21,13 +21,39 @@ RSpec.describe 'Destroy Existing Merchant' do
       expect(page).to_not have_content(@brian.name)
     end
 
-    it 'When a merchant is destroyed, their items are also destroyed' do
-      page.driver.submit :delete, merchant_path(@brian), {}
+    describe "When a merchant is destroyed" do
+      it 'their items are also destroyed' do
+        page.driver.submit :delete, merchant_path(@brian), {}
 
-      visit items_path
+        visit items_path
 
-      expect(page).to_not have_content(@giant.name)
+        expect(page).to_not have_content(@giant.name)
+      end
+
+      it 'their employees are also destroyed' do
+        employee = create(:employee, role: 1, merchant: @brian)
+
+        expect(@brian.users).to include(employee)
+        expect(User.count).to eq(2)
+
+        page.driver.submit :delete, merchant_path(@brian), {}
+
+        expect(User.count).to eq(1)
+      end
+
+      it 'their discounts are also destroyed' do
+        discount = create(:discount, merchant: @brian)
+
+        expect(@brian.bulk_discounts).to include(discount)
+        expect(BulkDiscount.count).to eq(1)
+
+        page.driver.submit :delete, merchant_path(@brian), {}
+
+        expect(BulkDiscount.count).to eq(0)
+      end
+
     end
+
 
     describe 'If a merchant has items that have been ordered' do
       it 'I do not see a button to delete the merchant' do

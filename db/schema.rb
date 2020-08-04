@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20200804055513) do
     t.integer "bulk_quantity"
     t.integer "percentage_discount"
     t.bigint "merchant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["merchant_id"], name: "index_bulk_discounts_on_merchant_id"
   end
 
