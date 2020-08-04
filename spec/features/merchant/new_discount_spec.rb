@@ -42,6 +42,7 @@ RSpec.describe "New Merchant Bulk Discount Spec" do
 
         expect(BulkDiscount.count).to eq(1)
         expect(current_path).to eq(new_merchant_discount_path)
+        expect(page).to have_content("bulk_quantity: [\"is not a number\"]")
 
 
         fill_in :bulk_quantity, with: 40
@@ -50,6 +51,17 @@ RSpec.describe "New Merchant Bulk Discount Spec" do
 
         expect(BulkDiscount.count).to eq(1)
         expect(current_path).to eq(new_merchant_discount_path)
+        expect(page).to have_content("percentage_discount: [\"Discount must be percentage from 1 - 100\"]")
+
+
+        # fill_in :bulk_quantity, with: 40
+        # fill_in :percentage_discount, with: 10
+        click_button "Create Bulk Discount"
+
+        expect(BulkDiscount.count).to eq(1)
+        expect(current_path).to eq(new_merchant_discount_path)
+        expect(page).to have_content("bulk_quantity: [\"is not a number\"]")
+        expect(page).to have_content("percentage_discount: [\"Discount must be percentage from 1 - 100\"]")
       end
 
       it "Filling in the form with invalid information" do
@@ -59,6 +71,8 @@ RSpec.describe "New Merchant Bulk Discount Spec" do
 
         expect(BulkDiscount.count).to eq(1)
         expect(current_path).to eq(new_merchant_discount_path)
+        expect(page).to have_content("bulk_quantity: [\"must be greater than 0\"]")
+
 
         fill_in :bulk_quantity, with: 40
         fill_in :percentage_discount, with: -10
@@ -66,6 +80,7 @@ RSpec.describe "New Merchant Bulk Discount Spec" do
 
         expect(BulkDiscount.count).to eq(1)
         expect(current_path).to eq(new_merchant_discount_path)
+        expect(page).to have_content("percentage_discount: [\"Discount must be percentage from 1 - 100\"]")
       end
     end
   end
