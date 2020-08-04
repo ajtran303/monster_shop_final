@@ -2,8 +2,10 @@ class Merchant::BulkDiscountsController < Merchant::BaseController
   def index
     @discounts = current_user.merchant.bulk_discounts
   end
+
   def new
   end
+
   def create
     merchant = current_user.merchant
     discount = merchant.bulk_discounts.new(bulk_discount_params)
@@ -13,6 +15,20 @@ class Merchant::BulkDiscountsController < Merchant::BaseController
     else
       generate_flash(discount)
       redirect_to new_merchant_discount_path
+    end
+  end
+
+  def edit
+    @discount = BulkDiscount.find(params[:id])
+  end
+
+  def update
+    @discount = BulkDiscount.find(params[:id])
+    if @discount.update(bulk_discount_params)
+      redirect_to "/merchant/discounts"
+    else
+      generate_flash(@discount)
+      redirect_to "/merchant/discounts/#{@discount.id}/edit"
     end
   end
 

@@ -10,6 +10,7 @@
       <span>Quantity: <%= discount.bulk_quantity %></span>
       <span>Discount: <%= discount.percentage_discount %>%</span>
       <span>Created At: <%= discount.created_at.to_s(:short) %></span>
+      <span><%= link_to "Update Discount", "/merchant/discounts/#{discount.id}/edit" %></span>
     </section>
   <% end %>
 <% end %>
