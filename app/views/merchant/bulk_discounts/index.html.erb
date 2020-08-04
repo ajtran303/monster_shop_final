@@ -11,6 +11,7 @@
       <span>Discount: <%= discount.percentage_discount %>%</span>
       <span>Created At: <%= discount.created_at.to_s(:short) %></span>
       <span><%= link_to "Update Discount", "/merchant/discounts/#{discount.id}/edit" %></span>
+      <span><%= button_to "Delete", merchant_discount_path(discount), method: :delete %></span>
     </section>
   <% end %>
 <% end %>
