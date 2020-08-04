@@ -4,6 +4,8 @@ class CreateBulkDiscounts < ActiveRecord::Migration[5.1]
       t.integer :bulk_quantity
       t.integer :percentage_discount
       t.references :merchant, foreign_key: true
+
+      t.timestamps
     end
   end
 end
