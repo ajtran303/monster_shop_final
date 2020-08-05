@@ -7,8 +7,27 @@ RSpec.describe BulkDiscount do
           .in_range(1..100)
           .with_message("Discount must be percentage from 1 - 100") }
   end
-  
+
   describe "associations" do
     it { should belong_to :merchant }
+  end
+
+  describe "class methods" do
+    it ".find_eligible_discount()" do
+      merchant1 = create(:merchant)
+      discount3 = create(:discount, merchant: merchant1, bulk_quantity: 30, percentage_discount: 12)
+      discount1 = create(:discount, merchant: merchant1, bulk_quantity: 10, percentage_discount: 5)
+      discount2 = create(:discount, merchant: merchant1, bulk_quantity: 20, percentage_discount: 8)
+
+      expect(merchant1.bulk_discounts.find_eligible_discount(5)).to eq(nil)
+      expect(merchant1.bulk_discounts.find_eligible_discount(9)).to eq(nil)
+
+      expect(merchant1.bulk_discounts.find_eligible_discount(10)).to eq(discount1)
+      expect(merchant1.bulk_discounts.find_eligible_discount(19)).to eq(discount1)
+
+      expect(merchant1.bulk_discounts.find_eligible_discount(20)).to eq(discount2)
+
+      expect(merchant1.bulk_discounts.find_eligible_discount(30)).to eq(discount3)
+    end
   end
 end
