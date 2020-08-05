@@ -7,4 +7,8 @@ class BulkDiscount < ApplicationRecord
   def self.find_eligible_discount(item_quantity)
     order(:bulk_quantity).where("bulk_quantity <= ?", item_quantity).last
   end
+
+  def calculate_discount(price)
+    price * (100 - percentage_discount) * 0.01
+  end
 end
