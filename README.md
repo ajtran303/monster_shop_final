@@ -4,6 +4,24 @@ This is the repo for my Mod 2 Backend final project at the Turing School.
 
 The objective is to add a "bulk discount" feature to an existing codebase for an e-commerce platform.
 
+## Setup Instructions
+
+### Easy mode
+Go to the production site https://stormy-sands-63614.herokuapp.com/
+
+### Hard Mode
+First, set up a local server in your terminal:
+
+```zsh
+git clone git@github.com:ajtran303/monster_shop_final.git
+cd monster_shop_final
+bundle install
+bundle exec rails db:{drop,create,migrate,seed}
+rails s
+```
+
+Then, in your browser: go to `localhost:3000`
+
 ## Code Snippets
 
 ```ruby
@@ -47,24 +65,6 @@ def grand_total
   order_items.sum(&:subtotal)
 end
 ```
-
-## Setup Instructions
-
-### Easy mode
-Go to the production site https://stormy-sands-63614.herokuapp.com/
-
-### Hard Mode
-First, set up a local server in your terminal:
-
-```zsh
-git clone git@github.com:ajtran303/monster_shop_final.git
-cd monster_shop_final
-bundle install
-bundle exec rails db:{drop,create,migrate,seed}
-rails s
-```
-
-Then, in your browser: go to `localhost:3000`
 
 ## How to use the Bulk Discount features
 
