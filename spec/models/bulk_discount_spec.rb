@@ -30,4 +30,16 @@ RSpec.describe BulkDiscount do
       expect(merchant1.bulk_discounts.find_eligible_discount(30)).to eq(discount3)
     end
   end
+
+  describe "instance methods" do
+    it ".calculate_discount()" do
+      merchant1 = create(:merchant)
+      discount1 = create(:discount, merchant: merchant1, bulk_quantity: 5, percentage_discount: 10)
+
+      bulk_order = {quantity: 5, price: 10}
+      subtotal = bulk_order[:quantity] * bulk_order[:price]
+
+      expect(discount1.calculate_discount(subtotal)).to eq(45.0)
+    end
+  end
 end
