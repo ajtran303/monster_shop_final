@@ -109,10 +109,6 @@ When a merchant's employee is logged-in, they can see all of their bulk discount
 
 ![Screen Shot 2020-08-05 at 3 55 30 AM](https://user-images.githubusercontent.com/31839316/89399729-14e03100-d6d0-11ea-90ff-1e903e9695ae.png)
 
-![Screen Shot 2020-08-05 at 3 55 47 AM](https://user-images.githubusercontent.com/31839316/89399728-14e03100-d6d0-11ea-9918-d4ad39b24340.png)
-
-![Screen Shot 2020-08-05 at 3 55 54 AM](https://user-images.githubusercontent.com/31839316/89399725-14479a80-d6d0-11ea-8277-6f3bca917cdd.png)
-
 <img width="825" alt="Screen Shot 2020-08-05 at 6 27 26 AM" src="https://user-images.githubusercontent.com/31839316/89412739-cf7a2e80-d6e4-11ea-85aa-4799cd6efc78.png">
 <img width="825" alt="Screen Shot 2020-08-05 at 6 27 42 AM" src="https://user-images.githubusercontent.com/31839316/89412742-d012c500-d6e4-11ea-80a0-c549f3ec67cb.png">
 
