@@ -119,8 +119,7 @@ When a merchant's employee is logged-in, they can see all of their bulk discount
 ## Completion Criteria (Completed)
 
 1. Merchants need full CRUD functionality on bulk discounts, and will be accessed a link on the merchant's dashboard.
-1. You will implement a percentage based discount:
-- 5% discount on 20 or more items
+1. You will implement a percentage based discount: 5% discount on 20 or more items
 1. A merchant can have multiple bulk discounts in the system.
 1. When a user adds enough value or quantity of a single item to their cart, the bulk discount will automatically show up on the cart page.
 1. A bulk discount from one merchant will only affect items from that merchant in the cart.
