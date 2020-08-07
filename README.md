@@ -105,8 +105,6 @@ A logged-in customer can check out their cart to place an order. If a customer c
 ### As Megan or Brian, merchant employees:
 When a merchant's employee is logged-in, they can see all of their bulk discounts by clicking a link on their dashboard. From the bulk discounts index page, they are able to create new discounts or update and destroy existing ones.
 
-![Screen Shot 2020-08-05 at 3 55 18 AM](https://user-images.githubusercontent.com/31839316/89399731-14e03100-d6d0-11ea-8d03-fd1a0ef50c40.png)
-
 ![Screen Shot 2020-08-05 at 3 55 30 AM](https://user-images.githubusercontent.com/31839316/89399729-14e03100-d6d0-11ea-90ff-1e903e9695ae.png)
 
 <img width="825" alt="Screen Shot 2020-08-05 at 6 27 26 AM" src="https://user-images.githubusercontent.com/31839316/89412739-cf7a2e80-d6e4-11ea-85aa-4799cd6efc78.png">
